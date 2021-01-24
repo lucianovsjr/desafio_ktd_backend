@@ -30,6 +30,7 @@ Buscamos envolver nesse desafio:
    - Crie um novo virtualenv com o comando `python -m virtualenv venv`;
    - Ative seu virtualenv com o comando `source venv/bin/activate`;
    - Instale as dependências com o comando `pip install -r requirements.txt`;
+   - Execute os testes com o comando `python manage.py test apps/`;
    - Inicie o servidor com o comando `python manage.py runserver`. Agora você deve conseguir acessar a Browsable API em http://localhost:8000. Note que não é necessário executar um banco de dados, ou executar migrations iniciais, já que o projeto está configurado para utilizar a engine SQLite, com um arquivo que está incluso no repositório;
    - O banco de dados incluso no repositório contém uma conta de usuário criada com username `desafio` e senha `desafio`. Você pode precisar dessas credenciais para fazer login na página da Browsable API.
 6. Analise o projeto e repare que já existem endpoints para acessar os modelos `Road` (http://localhost:8000/roads/) e `Status` (http://localhost:8000/status/), mas não existe um endpoint para acessar o modelo `Occurrence`.

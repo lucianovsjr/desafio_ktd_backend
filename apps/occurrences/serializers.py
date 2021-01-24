@@ -14,4 +14,11 @@ class RoadSerializer(serializers.HyperlinkedModelSerializer):
         fields = ["name", "uf_code", "length"]
 
 
-# add new code below
+class OccurrenceSerializer(serializers.HyperlinkedModelSerializer):
+    road_name = serializers.ReadOnlyField(source='road.name')
+    status_name = serializers.ReadOnlyField(source='status.name')
+
+    class Meta:
+        model = Occurrence
+        fields = ["description", "road", "road_name", "km", "status",
+                  "status_name", "created_at", "updated_at"]

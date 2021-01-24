@@ -21,3 +21,6 @@ profiling/*
 .DS_Store
 
 .ipynb_checkpoints/*
+
+# Pycharm
+.idea/

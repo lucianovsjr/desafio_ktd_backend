@@ -21,9 +21,7 @@ from apps.occurrences import views
 router = routers.DefaultRouter()
 router.register(r"roads", views.RoadViewSet)
 router.register(r"status", views.StatusViewSet)
-# add new code below
-
-# add new code above
+router.register(r"occurrence", views.OccurenceViewSet, basename="occurrence")
 
 urlpatterns = [
     path("", include(router.urls)),
