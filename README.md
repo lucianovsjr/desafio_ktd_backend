@@ -29,6 +29,8 @@ Buscamos envolver nesse desafio:
    - Abra o terminal e entre na pasta raiz do projeto;
    - Crie um novo virtualenv com o comando `python -m virtualenv venv`;
    - Ative seu virtualenv com o comando `source venv/bin/activate`;
+   - Copie o arquivo .env de exemplo com o comando `cp contrib/env-sample .env`;
+   - Defina sua Secret Key no arquivo .env;
    - Instale as dependências com o comando `pip install -r requirements.txt`;
    - Execute os testes com o comando `python manage.py test apps/`;
    - Inicie o servidor com o comando `python manage.py runserver`. Agora você deve conseguir acessar a Browsable API em http://localhost:8000. Note que não é necessário executar um banco de dados, ou executar migrations iniciais, já que o projeto está configurado para utilizar a engine SQLite, com um arquivo que está incluso no repositório;
