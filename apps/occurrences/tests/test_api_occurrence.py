@@ -53,6 +53,7 @@ class OccurrenceApiTest(APITestCase):
                      "km": "65", "road": concat_url(URL_ROAD, _road.pk),
                      "status": concat_url(URL_STATUS, _status.pk)}
         self.client.post(URL_OCCURRENCE, self.data)
+
         self.occurrence_url = concat_url(URL_OCCURRENCE, 1)
 
     def test_get(self):
@@ -116,3 +117,28 @@ class OccurrenceUnAuthenticatedApiTest(APITestCase):
     def test_delete(self):
         resp = self.client.delete(self.occurrence_url)
         self.assertEqual(resp.status_code, status.HTTP_403_FORBIDDEN)
+
+
+class OccurrenceNamesApiTest(APITestCase):
+    def setUp(self):
+        User.objects.create_superuser(username='desafio', password='desafio')
+
+        self._status = Status.objects.create(name='Fazendo', color_hex='#00ff00')
+        self._road = Road.objects.create(name='BR-040', uf_code='41', length=1179)
+
+        self.client.login(username="desafio", password="desafio")
+
+        data = {"description": "Quiquia modi etincidunt modi.", "km": "65",
+                "road": concat_url(URL_ROAD, self._road.pk),
+                "status": concat_url(URL_STATUS, self._status.pk)}
+        self.client.post(URL_OCCURRENCE, data)
+
+        self.occurrence_url = concat_url(URL_OCCURRENCE, 1)
+
+    def test_status(self):
+        resp = self.client.get(self.occurrence_url)
+        self.assertEqual(resp.data['status_name'], self._status.name)
+
+    def test_road(self):
+        resp = self.client.get(self.occurrence_url)
+        self.assertEqual(resp.data['road_name'], self._road.name)
